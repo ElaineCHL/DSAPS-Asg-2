@@ -12,7 +12,6 @@ bool readFile(const char *, BST *);
 int menu();
 bool Redundant(BST, Student);
 
-
 int main() {
 	ifstream inFile;
 	Student student;
@@ -42,6 +41,27 @@ int main() {
 			break;
 
 		case 3: // Display student
+			system("cls");
+			int order, source;
+			cout << "DISPLAY OUTPUT\n\n";
+			cout << "Display order? (1 - ascending order / 2 - descending order): "; 
+			cin >> order;
+			cout << "Where do you want to display the output? (1 - Screen / 2 - File): ";
+			cin >> source;
+			cout << endl;
+
+			if (stuTree.display(order, source)) {
+				cout << "\nDisplayed successfully.\n" << endl;
+			}
+			else {
+				cout << "\nFail to display.\n" << endl;
+			}
+
+			system("pause");
+			system("cls");
+			break;
+		
+
 
 			system("pause");
 			system("cls");
@@ -199,3 +219,5 @@ bool Redundant(BST stuTree, Student student)
 	
 	return false;
 }
+
+

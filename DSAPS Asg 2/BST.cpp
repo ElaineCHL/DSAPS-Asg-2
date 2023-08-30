@@ -57,6 +57,8 @@ void BST::inOrderPrint2(BTNode *cur) {
 }
 
 
+
+
 void BST::postOrderPrint() {
 	if (root == NULL) return;// handle special case
 	else postOrderPrint2(root);// do normal process
@@ -256,8 +258,76 @@ void BST::case3(BTNode *cur) {
 
 	// remove IS Node
 	free(is);
+
 }
 
+//Display
+
+void BST::reverseInOrderPrint2(BTNode* cur) {
+
+	if (cur == NULL) return;
+
+	reverseInOrderPrint2(cur->right);
+	cur->item.print(cout);
+	reverseInOrderPrint2(cur->left);
+}
+
+void BST::inOrderPrint2File(BTNode* cur, ofstream& outputFile) {
+
+	if (cur == NULL) return;
+
+	inOrderPrint2File(cur->left, outputFile);
+	cur->item.print(outputFile);
+	inOrderPrint2File(cur->right, outputFile);
+}
+
+void BST::reverseInOrderPrint2File(BTNode* cur, ofstream& outputFile) {
+
+	if (cur == NULL) return;
+
+	reverseInOrderPrint2File(cur->right, outputFile);
+	cur->item.print(outputFile);
+	reverseInOrderPrint2File(cur->left,outputFile);
+}
+
+bool BST::display(int order, int source) {
+	if (root == NULL) {
+		cout << "Tree is empty" << endl;
+		return false;
+	}
+
+	ofstream outputFile;
+
+	if (source == 2) {
+		outputFile.open("student-info.txt");
+		if (!outputFile.is_open()) {
+			cout << "Failed to open output file." << endl;
+			return false;
+		}
+	}
+
+	if (order == 1) {
+		if (source == 1) {
+			inOrderPrint2(root);
+		}
+		else if (source == 2) {
+			inOrderPrint2File(root, outputFile);
+			outputFile.close();
+		}
+	}
+
+	else if (order == 2) {
+		if (source == 1) {
+			reverseInOrderPrint2(root);
+		}
+		else if (source == 2) {
+			reverseInOrderPrint2File(root, outputFile);
+			outputFile.close();
+		}
+	}
+
+	return true;
+}
 
 
 
