@@ -10,6 +10,9 @@ struct BST {
 		int		count;
 		BTNode	*root;
 
+		// display
+		bool display(int, int);
+
 		// print operation for BST (same as BT)					
 		void preOrderPrint2(BTNode *);	// recursive function for preOrderPrint()
 		void inOrderPrint2(BTNode *);	// recursive function for inOrderPrint()
@@ -19,6 +22,9 @@ struct BST {
 		//print to file
 		void inOrderPrint2File(BTNode* , ofstream& );
 		void reverseInOrderPrint2File(BTNode*, ofstream& );
+
+		//print level nodes
+		bool printLevelNodes();
 
 		// sample operation (extra functions) - same as BT
 		void countNode2(BTNode *, int &);		// recursive function for countNode()
@@ -30,8 +36,6 @@ struct BST {
 		void case3(BTNode *);					// recursive function for remove()
 		void case2(BTNode *, BTNode *);		// recursive function for remove()
 		bool remove2(BTNode *, BTNode *, type);	// recursive function for remove()
-
-
 
 		// basic functions for BST
 		BST();
@@ -50,10 +54,7 @@ struct BST {
 		int countNode();		// count number of tree nodes
 		bool findGrandsons(type);	// find the grandsons of an input father item
 
-	    // display
-		bool display(int, int);
-		
-	
+	   
 };
 
 

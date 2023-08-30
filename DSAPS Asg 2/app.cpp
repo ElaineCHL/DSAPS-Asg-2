@@ -41,9 +41,7 @@ int main() {
 			break;
 
 		case 3: // Display student
-			system("cls");
 			int order, source;
-			cout << "DISPLAY OUTPUT\n\n";
 			cout << "Display order? (1 - ascending order / 2 - descending order): "; 
 			cin >> order;
 			cout << "Where do you want to display the output? (1 - Screen / 2 - File): ";
@@ -60,12 +58,6 @@ int main() {
 			system("pause");
 			system("cls");
 			break;
-		
-
-
-			system("pause");
-			system("cls");
-			break;
 
 		case 4: // Clone Subtree
 
@@ -74,6 +66,8 @@ int main() {
 			break;
 
 		case 5: // Print Level Nodes
+
+			stuTree.printLevelNodes();
 
 			system("pause");
 			system("cls");

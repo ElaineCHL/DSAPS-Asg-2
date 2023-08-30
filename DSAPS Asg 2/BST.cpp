@@ -261,7 +261,7 @@ void BST::case3(BTNode *cur) {
 
 }
 
-//Display
+// display
 
 void BST::reverseInOrderPrint2(BTNode* cur) {
 
@@ -329,5 +329,43 @@ bool BST::display(int order, int source) {
 	return true;
 }
 
+// print level nodes
+bool BST::printLevelNodes() {
+	if (root == NULL) {
+		cout << "Tree is empty." << endl;
+		return false;
+	}
+
+	Queue q;
+	q.enqueue(root);
+
+	int level = 1;
+	int nodes = 1;  // Number of nodes in the current level
+
+	while (!q.empty()) {
+		cout << "Level " << level << " nodes: ";
+		int nextLevelNodes = 0;
+
+		for (int i = 0; i < nodes; i++) {
+			BTNode* cur;
+			q.dequeue(cur);
+
+			cout << cur->item.id << " "; 
+
+			if (cur->left != NULL) {
+				q.enqueue(cur->left);
+				nextLevelNodes++;
+			}
+			if (cur->right != NULL) {
+				q.enqueue(cur->right);
+				nextLevelNodes++;
+			}
+		}
+		cout << endl;
+		level++;
+		nodes = nextLevelNodes;
+	}
+	return true;
+}
 
 
