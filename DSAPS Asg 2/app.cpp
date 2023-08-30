@@ -191,7 +191,7 @@ bool Redundant(BST stuTree, Student student)
 		if (cur->item.compare2(student)) //if node value same as item, then return true
 			return true;
 
-		if (cur->item.compare(student))
+		if (cur->item.compare1(student))
 			cur = cur->left;
 		else 
 			cur = cur->right;
