@@ -10,8 +10,15 @@ using namespace std;
 
 bool readFile(const char *, BST *);
 int menu();
+bool Redundant(BST, Student);
 
 int main() {
+	ifstream inFile;
+	Student student;
+	const char *filename = "student.txt";
+	inFile.open(filename);
+	char s[256];
+	BST stuTree;
 	do {
 		switch (menu()) {
 
