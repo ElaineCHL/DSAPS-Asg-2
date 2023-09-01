@@ -56,6 +56,9 @@ struct BST {
 		bool CloneSubtree(BST, type);
 		bool findNode(type, BTNode*, BTNode&);
 		void CloneSubtree2(BTNode*);
+
+		bool deepestNodes();
+		void findDeepest(BTNode*, int, int&, Queue&);
 	   
 };
 
