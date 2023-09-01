@@ -19,6 +19,7 @@ int main() {
 	inFile.open(filename);
 	char s[256];
 	BST stuTree;
+	BST t2;
 	do {
 		switch (menu()) {
 
@@ -61,6 +62,32 @@ int main() {
 
 		case 4: // Clone Subtree
 
+
+			if (!t2.empty()) {
+				cout << "t2 is not empty. Cloning operation is not executed." << endl;
+			}
+			else {
+				Student tmp;
+				cout << "\nEnter the id of a node you want to clone: ";
+				cin >> tmp.id;
+				cout << "\n";
+				if (t2.CloneSubtree(stuTree, tmp)) {
+
+					cout << "\n\n========================================================\n";
+					cout << "                    Original tree\n";
+					cout << "                  (pre-order print)\n";
+					cout << "========================================================\n\n";
+					stuTree.preOrderPrint();
+
+					cout << "\n\n========================================================\n";
+					cout << "                  Newly cloned subtree\n";
+					cout << "                   (pre-order print)\n";
+					cout << "========================================================\n\n";
+					t2.preOrderPrint();
+				}
+				else
+					cout << "Cannot clone subtree." << endl;
+			}
 			system("pause");
 			system("cls");
 			break;

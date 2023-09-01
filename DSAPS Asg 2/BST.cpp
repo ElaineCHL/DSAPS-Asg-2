@@ -369,3 +369,41 @@ bool BST::printLevelNodes() {
 }
 
 
+bool BST::CloneSubtree(BST t1, type item) {
+	Student stu;
+	BTNode* tmp = new BTNode(stu);
+	if (t1.empty()) {
+		cout << "t1 is empty. ";
+		return false;
+	}
+
+	if (!findNode(item, t1.root, *tmp)) {
+		cout << "Can't find node with id " << item.id << endl;
+		return false;
+	}
+	else {
+		CloneSubtree2(tmp);
+	}
+	return true;
+}
+
+bool BST::findNode(type item, BTNode* cur, BTNode& tmp) {
+	if (cur == NULL) {
+		return false;
+	}
+	if (cur->item.compare2(item)) {
+		tmp = *cur;
+		return true;
+	}
+	if (findNode(item, cur->left, tmp))
+		return true;
+	return findNode(item, cur->right, tmp);
+}
+
+void BST::CloneSubtree2(BTNode* cur) {
+	if (cur == NULL)
+		return;
+	insert(cur->item);
+	CloneSubtree2(cur->left);
+	CloneSubtree2(cur->right);
+}

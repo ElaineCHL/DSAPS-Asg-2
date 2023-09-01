@@ -53,7 +53,9 @@ struct BST {
 		// sample operation (extra functions) - same as BT
 		int countNode();		// count number of tree nodes
 		bool findGrandsons(type);	// find the grandsons of an input father item
-
+		bool CloneSubtree(BST, type);
+		bool findNode(type, BTNode*, BTNode&);
+		void CloneSubtree2(BTNode*);
 	   
 };
 
