@@ -407,3 +407,47 @@ void BST::CloneSubtree2(BTNode* cur) {
 	CloneSubtree2(cur->left);
 	CloneSubtree2(cur->right);
 }
+
+bool BST::deepestNodes() {
+	Queue q;
+	
+	int maxLevel = -1;	//the level of tree without node is -1
+
+	if (root == NULL){
+		cout << "The tree is empty." << endl;
+		return false;
+	}
+	findDeepest(root, 0, maxLevel, q);
+
+	if (!q.empty()) {
+		cout << "Deepest Nodes: ";
+		for (int i = 0; i <= q.size(); i++) {
+			BTNode* deepestNode;
+			q.dequeue(deepestNode);
+			cout << deepestNode->item.id;	//display the id of deepest node
+			cout << " ";
+		}
+	}
+	cout << endl;
+	return true;
+}
+
+void BST::findDeepest(BTNode* root, int level, int& maxLevel, Queue &q) {
+	BTNode* cur;
+	if (root != NULL) {
+		findDeepest(root->left, ++level, maxLevel, q);
+		
+		if (level > maxLevel) {	//if level of root greater than the current level
+			while (!q.empty()) {
+				q.dequeue(cur);		//remove the current deepest root so far
+			}
+			maxLevel = level;
+		}
+
+		if (level == maxLevel) {	//if the level of root same with the current level
+			q.enqueue(root);		//insert the node as the deepest nodes.
+		}
+		
+		findDeepest(root->right, level, maxLevel, q);
+	}
+}
