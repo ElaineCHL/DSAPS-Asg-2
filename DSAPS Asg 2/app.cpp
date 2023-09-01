@@ -36,7 +36,9 @@ int main() {
 			break;
 
 		case 2: // Print deepest nodes
-
+			if (!stuTree.deepestNodes())
+				cout << "Fail to get deepest node(s)." << endl;
+			cout << endl;
 			system("pause");
 			system("cls");
 			break;
