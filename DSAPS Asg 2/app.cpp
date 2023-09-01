@@ -166,7 +166,7 @@ bool readFile(const char* filename, BST* t1) {
 	}
 	else {
 		while (!inFile.eof()) {
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 3; i++) {	//for loop is used to read the data from txt file and insert them into Student struct
 				inFile >> s;
 			}
 			inFile >> student.id;
@@ -205,7 +205,7 @@ bool readFile(const char* filename, BST* t1) {
 			}
 			inFile >> student.cgpa;
 
-			if (!Redundant(*t1, student)) {
+			if (!Redundant(*t1, student)) {		//if the data does not exist in the tree, it will be inserted.
 				t1->insert(student);
 			}
 			else
@@ -214,7 +214,7 @@ bool readFile(const char* filename, BST* t1) {
 		inFile.close();
 
 		cout << endl;
-		cout << "The number of student record successfully read: " << t1->countNode() << endl << endl;
+		cout << "The number of student record successfully read: " << t1->countNode() << endl << endl;	//display the no. of nodes in the tree.
 
 	}
 	
