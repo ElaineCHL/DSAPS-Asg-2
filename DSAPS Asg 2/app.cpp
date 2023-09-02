@@ -104,6 +104,8 @@ int main() {
 
 		case 6: // Print Path
 
+			stuTree.printPath();
+
 			system("pause");
 			system("cls");
 			break;

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <string>
 #include "BST.h"
 
 
@@ -449,5 +450,43 @@ void BST::findDeepest(BTNode* root, int level, int& maxLevel, Queue &q) {
 		}
 		
 		findDeepest(root->right, level, maxLevel, q);
+	}
+}
+
+bool BST::printPath() {
+	// Check if the tree is empty
+	if (root == NULL) {
+		cout << "Tree is empty. There is no external path to print." << endl;
+		return false; 
+	}
+
+	cout << "Below are the external paths for the tree:" << endl;
+	cout << endl;
+
+	printExternalPaths(root, ""); // 'root' is a pointer which acts as a starting point for transversing the tree
+								  // '""' is an empty string (initial path) that will build upon to represent the path to the current node
+
+	return true;
+}
+
+void BST::printExternalPaths(BTNode* node, string currentPath) {
+	if (node == NULL) { // Stop recursion if the current node is NULL
+		return;
+	}
+
+	// Append the current node's ID to the path
+	if (!currentPath.empty()) {
+		currentPath += " "; // Add a space separator between node IDs
+	}
+	currentPath += to_string(node->item.id); // Convert node ID to a string and append it to the currentPath sting
+
+	// Check if the current node is an external node
+	if (node->left == NULL && node->right == NULL) {
+		cout << currentPath << endl;
+	}
+	else {
+		// Recursively explore left and right subtrees
+		printExternalPaths(node->left, currentPath);
+		printExternalPaths(node->right, currentPath);
 	}
 }

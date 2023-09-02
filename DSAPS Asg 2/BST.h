@@ -59,6 +59,10 @@ struct BST {
 
 		bool deepestNodes();
 		void findDeepest(BTNode*, int, int&, Queue&);
+
+
+		bool printPath();
+		void printExternalPaths(BTNode* node, string currentPath);
 	   
 };
 
